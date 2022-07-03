@@ -21,15 +21,19 @@ The following packages (i.e., libraries) are necessary to successfully run this 
 
 ### Roles and Responsabilities of the main sub-modules
 
-1. Flask
-2. gunicorn
-3. numpy
-4. pandas
-5. Pillow
-6. python-docx:
-7. requests: 
+1. Flask: micro web framework, used to create an app
+2. gunicorn: it is a pure-Python HTTP server for WSGI applications.
+3. numpy: to do array calculations
+4. pandas: to load csv
+5. Pillow: to manipulate images
+6. python-docx: to handle docx files
+7. requests: to make HTTP requests simpler and easier to handle
 
 Note: You must install locally the xpdf package for your OS.
+
+# Local installation
+
+Simply clone this repo and run "pip install requirements.txt".
 
 ## Running the programs
 

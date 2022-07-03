@@ -2,5 +2,4 @@
 
 1. meme_engine.py
 
-2. __init__.py
- 
+It builds the Meme engine to select one file format and add quote body and quote author to the image. 
