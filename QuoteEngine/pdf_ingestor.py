@@ -4,6 +4,7 @@ from .ingestor_interface import IngestorInterface
 import subprocess
 from typing import List
 
+
 class PDFIngestor(IngestorInterface):
     """
     This class utilizes the subprocess module \
@@ -12,9 +13,9 @@ class PDFIngestor(IngestorInterface):
     to text and the ingest the texts.
     Note: this class deletes temporary files.
     """
-    
+
     allowed_exts = ['pdf']
-	
+
     @classmethod
     def parse(cls, path: str) -> List[QuoteModel]:
         if(cls.can_ingest(path)):
@@ -30,16 +31,13 @@ class PDFIngestor(IngestorInterface):
             # in the CSVIngestor class
             with open(txt, 'r') as file_txt:
                 txt_quotes = []
-                for line in file_txt.read().splitlines():#.readlines():
-                    if(line.split("-")[0]==''):
+                for line in file_txt.read().splitlines():  # .readlines():
+                    if(line.split("-")[0] == ''):
                         break
                     print(line)
                     body = line.split("-")[0]
                     author = line.split("-")[1]
-                    txt_quotes.append(QuoteModel(body,author))
+                    txt_quotes.append(QuoteModel(body, author))
                 return txt_quotes
         else:
             raise Exception("could not handle this.")
- 
-
-		

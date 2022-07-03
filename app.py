@@ -27,8 +27,7 @@ def setup():
         ings = Ingestor.parse(quote)
 #        print('ings',ings.body)
         for ing in ings:
-            print(ing.body,'-----',ing.author)
-            quotes.append([ing.body,ing.author])
+            quotes.append([ing.body, ing.author])
 
     images_path = "./_data/photos/dog/"
 
@@ -46,7 +45,7 @@ def setup():
 
 
 quotes, imgs = setup()
-print('imgs',imgs)
+
 
 @app.route('/')
 def meme_rand():
@@ -81,24 +80,24 @@ def meme_post():
     #    file and the body and author form paramaters.
     # 3. Remove the temporary saved image.
     img = request.form.get('image_url')
-    
+
     try:
         req = requests.get(img, allow_redirects=True)
-    except:
+    except Exception as ex:
         raise Exception('not a vaild url!')
-    
+
     # temporary file
-    temp = './static/temp_{0}.png'.format(randint(0,10000))    
-    
+    temp = './static/temp_{0}.png'.format(randint(0, 10000))
+
     with open(temp, 'wb') as temp_file:
         temp_file.write(req.content)
 
     body = request.form['body']
     author = request.form['author']
-    
+
     try:
         path = meme.make_meme(temp, body, author)
-    except:
+    except Exception as ex:
         raise Exception('not a valid image url')
 
     os.remove(temp)
